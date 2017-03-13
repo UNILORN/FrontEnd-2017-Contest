@@ -11,11 +11,27 @@
 |
 */
 
+
+use App\User;
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('api/rfid',function(){
-
-    return true;
+Route::get('api/rfid', function (Request $rfid) {
+    $userData = User::where($rfid)->get();
+    if (!empty($userData)) {
+        if($userData->toggle){
+            $userData->toggle = false;
+        }
+        else{
+            $userData->toggle = true;
+        }
+        $userData->save();
+        return true;
+    }
+    else{
+        return false;
+    }
 });

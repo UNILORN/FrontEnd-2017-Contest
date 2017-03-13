@@ -13,7 +13,7 @@ class Alert extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('alert', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userID');
             $table->timestamp('time');

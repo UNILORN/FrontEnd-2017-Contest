@@ -13,7 +13,7 @@ class Group extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('group', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamp('raspberrypi_token')->nullable();
