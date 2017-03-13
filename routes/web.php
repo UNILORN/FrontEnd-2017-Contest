@@ -19,19 +19,22 @@ Route::get('/', function () {
     return view('');
 });
 
-Route::get('api/rfid', function (Request $rfid) {
-    $userData = User::where($rfid)->get();
-    if (!empty($userData)) {
-        if($userData->toggle){
-            $userData->toggle = false;
+Route::get('api/rfid', function (Request $request) {
+    if (!empty($request->rfid)) {
+        $userData = User::where("rfid",$request->rfid)->first();
+        if (!empty($userData)) {
+            if ($userData->toggle) {
+                $userData->toggle = false;
+            } else {
+                $userData->toggle = true;
+            }
+            $userData->save();
+            return "SUCCESS!!";
+        } else {
+            return "[RFID] not found ";
         }
-        else{
-            $userData->toggle = true;
-        }
-        $userData->save();
-        return true;
     }
     else{
-        return false;
+        return "nothing [RFID] (?rfid=00000000)";
     }
 });
