@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('toggle')->default(false);
-            $table->string('rfid');
-            $table->integer('groupID');
+            $table->string('rfid')->nullable();
+            $table->integer('groupID')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
