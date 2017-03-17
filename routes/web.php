@@ -11,7 +11,7 @@
 |
 */
 
-
+use App\Events\RfidPusher;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,6 +69,23 @@ Route::get('api/rfid', function (Request $request) {
                 $userData->toggle = true;
             }
             $userData->save();
+
+            $options = array(
+                'encrypted' => true
+            );
+            $pusher = new Pusher(
+                '1330b9288dddb81f7487',
+                'c4b9163d30052544e4ee',
+                '315652',
+                $options
+            );
+
+            $data['name'] = $userData->name;
+            $data['toggle'] = $userData->toggle;
+            $data['id'] = $userData->id;
+            $pusher->trigger('my-channel', 'my-event', $data);
+
+
             return "SUCCESS!!";
         } else {
             return "[RFID] not found ";
