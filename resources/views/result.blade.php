@@ -43,7 +43,7 @@
             htmlData = "家を出ました";
             $('#user'+data.id).style("background-color","#e57373");
         }
-
+        alert("dasdas");
         Push.create("成功！", {
             body: data.name+"が"+htmlData,
             timeout: 4000,
