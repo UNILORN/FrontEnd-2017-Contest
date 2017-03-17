@@ -14,10 +14,26 @@
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('');
+    if(Auth::check()){
+        return redirect('/login');
+    }
+    return view('top');
 });
+
+Route::get('/result',function(){
+    return view('result');
+});
+Route::get('/mypage',function(){
+    return view('result');
+});
+Route::get('/contact',function(){
+    return view('result');
+});
+
+
 
 Route::get('api/rfid', function (Request $request) {
     if (!empty($request->rfid)) {
@@ -38,3 +54,7 @@ Route::get('api/rfid', function (Request $request) {
         return "nothing [RFID] (?rfid=00000000)";
     }
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
