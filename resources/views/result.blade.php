@@ -37,13 +37,12 @@
         var htmlData = "";
         if(data.toggle){
             htmlData = "帰宅しました";
-            $('#user'+data.id).style("background-color","#64b5f6");
+            $('#user'+data.id).css("background-color","#64b5f6");
         }
         else{
             htmlData = "家を出ました";
-            $('#user'+data.id).style("background-color","#e57373");
+            $('#user'+data.id).css("background-color","#e57373");
         }
-        alert("dasdas");
         Push.create("成功！", {
             body: data.name+"が"+htmlData,
             timeout: 4000,

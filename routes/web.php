@@ -68,7 +68,7 @@ Route::get('api/rfid', function (Request $request) {
             } else {
                 $userData->toggle = true;
             }
-            $userData->save();
+
 
             $options = array(
                 'encrypted' => true
@@ -84,7 +84,7 @@ Route::get('api/rfid', function (Request $request) {
             $data['toggle'] = $userData->toggle;
             $data['id'] = $userData->id;
             $pusher->trigger('my-channel', 'my-event', $data);
-
+            $userData->save();
 
             return "SUCCESS!!";
         } else {
