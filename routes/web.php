@@ -17,7 +17,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-
     if(!Auth::check()){
         return redirect('/login');
     }
@@ -29,27 +28,35 @@ Route::get('/result',function(){
     if(!Auth::check()){
         return redirect('/login');
     }
-    return view('result');
+    $group = Auth::user()->groupID;
+    $user = User::where('groupID',$group)->get();
+
+    return view('result',compact('user'));
 });
+
+
 Route::get('/mypage',function(){
     if(!Auth::check()){
         return redirect('/login');
     }
     return view('mypage');
 });
+
+
 Route::get('/contact',function(){
     if(!Auth::check()){
         return redirect('/login');
     }
     return view('contact');
 });
+
+
 Route::get('/group',function(){
     if(!Auth::check()){
         return redirect('/login');
     }
     return view('group');
 });
-
 
 
 Route::get('api/rfid', function (Request $request) {
