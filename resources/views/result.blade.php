@@ -7,10 +7,62 @@
     <title>Result - FrontEnd2017</title>
 </head>
 <body>
-<ul>
+    <main>
     @foreach($user as $value)
-        <li> {{$value->name}} : {{$value->toggle}}</li>
+        <div class="mainColumn">
+            <div style="background-color: {{$value->toggle ? "#64b5f6" : "#e57373"}}">
+                <a href="#">
+                    <span>{{$value->name}}</span>
+                </a>
+            </div>
+        </div>
     @endforeach
-</ul>
+    </main>
 </body>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Exo+2');
+    body,html{
+        margin:0;
+        padding:0;
+    }
+    a{
+        text-decoration: none;
+    }
+    main{
+        letter-spacing: -0.5em;
+    }
+    .mainColumn{
+        display: inline-block;
+        width:25%;
+        height:25vh;
+        box-sizing: border-box;
+        padding:20px;
+        font-family: 'Exo 2', sans-serif;
+        letter-spacing: initial;
+    }
+    .mainColumn > div{
+        width:100%;
+        height:100%;
+    }
+    .mainColumn a{
+        display: table;
+        font-size: 20px;
+        width:100%;
+        height:100%;
+        line-height: 100%;
+        text-align: center;
+        color: #212121;
+        letter-spacing: 0.1em;
+    }
+    .mainColumn a:active{
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    .mainColumn span{
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+
+</style>
 </html>
