@@ -11,6 +11,9 @@
 </head>
 <body>
     <main>
+        <div class="topHeader">
+            <a href="/">TOP</a>
+        </div>
     @foreach($user as $value)
         <div class="mainColumn">
             <div id="user{{$value->id}}" style="background-color: {{$value->toggle ? "#64b5f6" : "#e57373"}}">
@@ -65,6 +68,27 @@
     a{
         text-decoration: none;
     }
+    .topHeader{
+        width: 100%;
+        height:100px;
+        padding: 10px;
+        box-sizing: border-box;
+        letter-spacing: initial;
+    }
+    .topHeader a{
+        display: block;
+        height: 100%;
+        text-align: center;
+        line-height: 70px;
+        font-size: 30px;
+        font-family: 'Exo 2', sans-serif;
+        color: #212121;
+        background-color: #69f0ae;
+    }
+    .topHeader a:active{
+        background-color: rgba(0,0,0,0.3);
+    }
+
     main{
         letter-spacing: -0.5em;
     }
